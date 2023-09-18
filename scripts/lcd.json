@@ -1,0 +1,13 @@
+
+{
+  "apps": [
+    {
+      "name": "billboard",
+      "cwd": "/root/scripts",
+      "args": "",
+      "script": "billboard.sh",
+      "exec_mode": "fork",
+      "exec_interpreter": "bash"
+    }
+  ]
+}

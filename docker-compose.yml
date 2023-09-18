@@ -1,0 +1,26 @@
+version: '3'
+services:
+
+  billboard:
+    image: zetabankhub/edu:melodic-billboard-v0.0.1
+    environment:
+      - DISPLAY
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - PULSE_SERVER=unix:/run/user/1000/pulse/native
+    devices:
+      - /dev/snd:/dev/snd
+    volumes:
+      - /run/user/1000/pulse:/run/user/1000/pulse
+      - /dev/bus/usb:/dev/bus/usb
+      - /run/udev:/run/udev:ro
+      - /dev:/dev
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/zeta/.config/pulse/cookie:/root/.config/pulse/cookie
+      - ./scripts:/root/scripts
+      - ./billboard/_data:/root/billboard/_data
+    command: pm2-runtime /root/scripts/lcd.json
+    network_mode: host
+    privileged: true
+    runtime: nvidia

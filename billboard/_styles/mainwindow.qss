@@ -1,0 +1,5 @@
+/* mainwindow.qss */
+
+MainWindow {
+    border-image: url(_photo/background.png) 0 0 0 0 stretch stretch;
+}
